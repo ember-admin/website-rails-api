@@ -1,0 +1,2 @@
+class ProductImageSerializer < AssetSerializer
+end
