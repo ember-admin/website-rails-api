@@ -1,10 +1,10 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-set :repo_url, 'git@github.com:ember-admin/website.git'
+set :repo_url, 'git@github.com:ember-admin/website-rails-api.git'
 
-set :application, "admin-api"
-set :deploy_to,   "/var/www/admin-cli-rails-api"
+set :application, "website-rails-api"
+set :deploy_to,   "/var/www/website-rails-api"
 set :rails_env, fetch(:stage)
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -48,7 +48,18 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+  task :make_assets_symlink do
+    on roles(:app) do
+      if fetch(:stage) == :production
+        execute "ln -sf /var/www/ember-cli-admin/current/dist #{release_path}/public/dist"
+      end
+    end
+  end
 end
+
+after  'deploy:publishing',          'deploy:make_assets_symlink'
+after  'deploy:make_assets_symlink', 'deploy:restart'
 
 namespace :unicorn do
   pid_path = "#{release_path}/pids"
