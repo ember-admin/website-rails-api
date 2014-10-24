@@ -5,7 +5,8 @@ pid "#{APP_ROOT}/shared/pids/unicorn.pid"
 stderr_path "#{APP_ROOT}/shared/log/unicorn.log"
 stdout_path "#{APP_ROOT}/shared/log/unicorn.log"
 
-listen '/tmp/unicorn.admin-rails-api.sock'
+# listen '/tmp/unicorn.admin-rails-api.sock'
+listen 8080, tcp_nopush: true
 worker_processes 4
 timeout 60
 
