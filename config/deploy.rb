@@ -31,7 +31,7 @@ set :migration_role, 'app'            # Defaults to 'db'
 # Default value for linked_dirs is []
 set :linked_dirs, %w(log pids sockets tmp public/uploads bin)
 
-set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
+# set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -52,7 +52,7 @@ namespace :deploy do
   task :make_assets_symlink do
     on roles(:app) do
       if fetch(:stage) == :production
-        execute "ln -sf /var/www/ember-cli-admin/current/dist #{release_path}/public/dist"
+        # execute "ln -sf /var/www/ember-cli-admin/current/dist #{release_path}/public/dist"
       end
     end
   end
