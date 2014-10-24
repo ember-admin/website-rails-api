@@ -5,9 +5,9 @@ pid "#{APP_ROOT}/shared/pids/unicorn.pid"
 stderr_path "#{APP_ROOT}/shared/log/unicorn.log"
 stdout_path "#{APP_ROOT}/shared/log/unicorn.log"
 
-listen '/tmp/unicorn.admin_rails_api.sock'
+listen '/tmp/unicorn.admin-rails-api.sock'
 worker_processes 4
-timeout 900
+timeout 60
 
 preload_app true
 
