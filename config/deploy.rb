@@ -52,7 +52,7 @@ namespace :deploy do
   task :make_assets_symlink do
     on roles(:app) do
       if fetch(:stage) == :production
-        # execute "ln -sf /var/www/ember-cli-admin/current/dist #{release_path}/public/dist"
+        execute "ln -sf /var/www/website-ember-cli-part/current/dist #{release_path}/public/dist"
       end
     end
   end

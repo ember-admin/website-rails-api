@@ -11,7 +11,7 @@ end
 
 def truncate_users
   User.destroy_all
-end?q=title%255Bvalue%255D%3DGreen%252C%2BEichmann%2Band%2BMaggio
+end
 
 def create_users
   5.times do
