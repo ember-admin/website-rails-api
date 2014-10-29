@@ -34,6 +34,8 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    awesome_nested_set (3.0.0.rc.5)
+      activerecord (>= 4.0.0, < 5)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -263,6 +265,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.8.1)
   annotate
+  awesome_nested_set
   better_errors
   binding_of_caller
   byebug

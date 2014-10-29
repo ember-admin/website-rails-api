@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024110747) do
+ActiveRecord::Schema.define(version: 20141029152724) do
 
   create_table "assets", force: true do |t|
     t.string   "data",                                      null: false
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20141024110747) do
 
   add_index "assets", ["assetable_type", "type", "assetable_id"], name: "index_assets_on_assetable_type_and_type_and_assetable_id", using: :btree
   add_index "assets", ["guid"], name: "index_assets_on_guid", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "prev_id"
+    t.integer  "next_id"
+  end
 
   create_table "companies", force: true do |t|
     t.string   "title"

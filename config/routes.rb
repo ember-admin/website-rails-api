@@ -21,6 +21,11 @@ Rails.application.routes.draw do
         resources :avatars
         resources :product_images
         resources :logos
+        resources :categories do
+          collection do
+            get :autocomplete
+          end
+        end
       end
     end
   end

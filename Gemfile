@@ -49,3 +49,4 @@ group :test do
   gem 'webmock'
 end
 gem 'rvm-capistrano'
+gem 'awesome_nested_set'
