@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         resources :categories do
           collection do
             get :autocomplete
+            post :rebuild
           end
         end
       end

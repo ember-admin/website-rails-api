@@ -3,7 +3,7 @@ require 'admin_search_ransack'
 class Admin::Api::V1::CategoriesController < ApplicationController
   include AdminSearchRansack
 
-  before_action :set_category, only: [:show, :update, :destroy]
+  before_action :set_category, only: [:show, :update, :destroy, :rebuild]
 
   def index
     q = Category.search(ransack_params(params)).result
@@ -26,9 +26,6 @@ class Admin::Api::V1::CategoriesController < ApplicationController
   end
 
   def update
-    if params[:category][:prev_id].present? || params[:category][:next_id].present? || params[:category][:parent].present?
-      return rebuild
-    end
     if @category.update(category_params)
       render json: @category
     else
@@ -47,12 +44,10 @@ class Admin::Api::V1::CategoriesController < ApplicationController
     render json: autocomplition, root: false
   end
 
-  private
-
   def rebuild
-    parent_id = params[:category][:parent].to_i
-    prev_id = params[:category][:prev_id].to_i
-    next_id = params[:category][:next_id].to_i
+    parent_id = params[:parent_id].to_i
+    prev_id = params[:prev_id].to_i
+    next_id = params[:next_id].to_i
     head(:bad_request) and return if parent_id.zero? && prev_id.zero? && next_id.zero?
     if prev_id.zero? && next_id.zero?
       @category.move_to_child_of Category.find(parent_id)
@@ -65,6 +60,7 @@ class Admin::Api::V1::CategoriesController < ApplicationController
     render json: @category, serializer: CategorySerializer
   end
 
+  private
   def set_category
     @category = Category.find(params[:id])
   end
