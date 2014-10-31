@@ -6,8 +6,17 @@ class Admin::Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy, :rebuild]
 
   def index
-    categories = Category.roots
-    render json: categories, meta: {total: Category.count}
+    categories = []
+
+    # ping https://github.com/steveklabnik for this issue in active_model_serializers gem
+
+    Category.roots.each do |category|
+      categories_json = CategorySerializer.new(category).as_json
+      categories << categories_json['categories']
+      categories << categories_json[:category] if categories_json[:category]
+    end
+
+    render json: {categories: categories.flatten}, meta: {total: Category.count}
   end
 
   def show
