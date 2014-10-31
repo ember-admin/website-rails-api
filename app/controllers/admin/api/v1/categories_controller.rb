@@ -6,9 +6,8 @@ class Admin::Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy, :rebuild]
 
   def index
-    q = Category.search(ransack_params(params)).result
-    categories = q.paginate(page: params[:page], per_page: params[:per_page])
-    render json: categories, meta: {total: q.count}
+    categories = Category.all.paginate(page: params[:page], per_page: params[:per_page])
+    render json: categories, meta: {total: Category.count}
   end
 
   def show
