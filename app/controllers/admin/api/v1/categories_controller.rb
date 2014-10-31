@@ -6,7 +6,7 @@ class Admin::Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy, :rebuild]
 
   def index
-    categories = Category.all.paginate(page: params[:page], per_page: params[:per_page])
+    categories = Category.roots
     render json: categories, meta: {total: Category.count}
   end
 
