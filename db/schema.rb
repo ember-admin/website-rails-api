@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029152724) do
+ActiveRecord::Schema.define(version: 20150227111519) do
 
   create_table "assets", force: true do |t|
     t.string   "data",                                      null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141029152724) do
     t.integer  "position",                  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_type"
   end
 
   add_index "assets", ["assetable_type", "type", "assetable_id"], name: "index_assets_on_assetable_type_and_type_and_assetable_id", using: :btree
@@ -36,8 +37,6 @@ ActiveRecord::Schema.define(version: 20141029152724) do
     t.integer  "depth"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "prev_id"
-    t.integer  "next_id"
   end
 
   create_table "companies", force: true do |t|
