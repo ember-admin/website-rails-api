@@ -33,14 +33,14 @@ class Admin::Api::V1::ProductImagesController < ApplicationController
   private
 
   def permit_params
-    options = params.require(:product_image).permit(:id, :assetable_id, :assetable_type, :guid, :type, :data)
+    options = params.require(:product_image).permit(:id, :assetable_id, :assetable_type, :guid, :type, :data, :position, :content_type)
     options.delete(:data) unless options[:data].present?
     options
   end
 
   def fetch_params
     options = {}
-    [:assetable_id, :assetable_type, :guid, :type, :is_main].each do |param|
+    [:assetable_id, :assetable_type, :guid, :type, :is_main, :position, :content_type].each do |param|
       options[param] = params[param]
     end
     options
