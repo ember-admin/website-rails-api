@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.2.1'
 gem 'rails', '4.1.1'
 gem 'mysql2'
 gem 'active_model_serializers', '0.8.1'
@@ -30,6 +30,7 @@ group :development do
   gem 'capistrano', '~> 3.1.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-rvm'
   gem 'capistrano-nginx-unicorn'
 end
 
