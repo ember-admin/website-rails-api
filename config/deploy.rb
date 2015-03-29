@@ -66,7 +66,9 @@ namespace :unicorn do
   unicorn_pid = "#{pid_path}/unicorn.pid"
 
   def run_unicorn
-    execute "#{fetch(:bundle_binstubs)}/unicorn", "-c #{release_path}/config/unicorn/#{fetch(:stage)}.rb -D -E #{fetch(:stage)}"
+    within release_path do
+      execute :bundle, "exec unicorn -c #{release_path}/config/unicorn/#{fetch(:stage)}.rb -D -E #{fetch(:stage)}"
+    end
   end
 
   desc 'Start unicorn'
