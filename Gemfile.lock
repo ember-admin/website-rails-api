@@ -101,6 +101,9 @@ GEM
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
+    globalize (4.0.3)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
     growl (1.0.3)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -286,6 +289,7 @@ DEPENDENCIES
   faker
   forgery
   fuubar
+  globalize (~> 4.0.3)
   growl (~> 1.0.3)
   guard-rspec
   guard-spork

@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ransack'
+gem 'globalize', '~> 4.0.3'
 group :development, :test, :production do
   gem 'pry-rails'
   gem 'pry-doc'

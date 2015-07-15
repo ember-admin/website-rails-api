@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227111519) do
+ActiveRecord::Schema.define(version: 20150715082505) do
 
   create_table "assets", force: true do |t|
     t.string   "data",                                      null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20150227111519) do
     t.float    "long"
     t.integer  "zoom",       default: 1
   end
+
+  create_table "product_translations", force: true do |t|
+    t.integer  "product_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "product_translations", ["locale"], name: "index_product_translations_on_locale", using: :btree
+  add_index "product_translations", ["product_id"], name: "index_product_translations_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "title"
