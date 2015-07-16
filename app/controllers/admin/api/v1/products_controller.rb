@@ -50,6 +50,6 @@ class Admin::Api::V1::ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title, :price, :company_id, :user_id, :is_active)
+      params.require(:product).permit(:title_en, :title_fr, :title_de, :title_ru, :price, :company_id, :user_id, :is_active)
     end
 end
