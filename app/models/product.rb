@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  translates :title
   belongs_to :company
   belongs_to :user
   has_one :product_image, -> { where is_main: true }, :as => :assetable, dependent: :destroy

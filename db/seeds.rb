@@ -13,6 +13,12 @@ def truncate_users
   User.destroy_all
 end
 
+def create_categories
+  5.times do |i|
+    Category.create(name: "Category #{i+1}")
+  end
+end
+
 def create_users
   5.times do
     u = User.create(email: Faker::Internet.email)
@@ -26,7 +32,12 @@ end
 
 def create_products
   50.times do
-    p = Product.create(title: Faker::Commerce.product_name, price: Faker::Number.number(3), company: Company.all[rand(0..4)], user: User.all[rand(0..4)])
+    Faker::Config.locale = 'en'
+    p = Product.new(title_en:Faker::Commerce.product_name, title_de:Faker::Commerce.product_name, title_fr:Faker::Commerce.product_name, 
+                    price: Faker::Number.number(3), company: Company.all[rand(0..4)], user: User.all[rand(0..4)])
+    Faker::Config.locale = 'ru'
+    p.title_ru = Faker::Commerce.product_name
+    p.save
     create_product_image(p.id)
   end
 end
@@ -74,3 +85,4 @@ truncate_users
 create_users
 truncate_products
 create_products
+create_categories
