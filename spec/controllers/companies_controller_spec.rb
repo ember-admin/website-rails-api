@@ -10,7 +10,7 @@ RSpec.describe Admin::Api::V1::CompaniesController, :type => :controller do
  
   describe "GET index" do
     it "assigns all companies as @companies" do
-      company = Company.create! valid_attributes
+      company = FactoryGirl.create(:company)
       get :index
       expect(assigns(:companies)).to eq([company])
     end
@@ -18,7 +18,7 @@ RSpec.describe Admin::Api::V1::CompaniesController, :type => :controller do
 
   describe "GET show" do
     it "assigns the requested company as @company" do
-      company = Company.create! valid_attributes
+      company = FactoryGirl.create(:company)
       get :show, {:id => company.to_param}
       expect(assigns(:company)).to eq(company)
     end
@@ -47,14 +47,14 @@ RSpec.describe Admin::Api::V1::CompaniesController, :type => :controller do
       }
 
       it "updates the requested company" do
-        company = Company.create! valid_attributes
+        company = FactoryGirl.create(:company)
         put :update, {:id => company.to_param, :company => new_attributes}
         company.reload
         expect(Company.last.title).to eq(new_attributes[:title])
       end
 
       it "assigns the requested company as @company" do
-        company = Company.create! valid_attributes
+        company = FactoryGirl.create(:company)
         put :update, {:id => company.to_param, :company => valid_attributes}
         expect(assigns(:company)).to eq(company)
       end
@@ -63,7 +63,7 @@ RSpec.describe Admin::Api::V1::CompaniesController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested company" do
-      company = Company.create! valid_attributes
+      company = FactoryGirl.create(:company)
       expect {
         delete :destroy, {:id => company.to_param}
       }.to change(Company, :count).by(-1)

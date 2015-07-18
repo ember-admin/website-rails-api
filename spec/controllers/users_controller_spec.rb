@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe Admin::Api::V1::UsersController, :type => :controller do
 
   let(:valid_attributes) {
@@ -11,7 +10,7 @@ RSpec.describe Admin::Api::V1::UsersController, :type => :controller do
  
   describe "GET index" do
     it "assigns all users as @users" do
-      user = User.create! valid_attributes
+      user = FactoryGirl.create(:user)
       get :index
       expect(assigns(:users)).to eq([user])
     end
@@ -19,7 +18,7 @@ RSpec.describe Admin::Api::V1::UsersController, :type => :controller do
 
   describe "GET show" do
     it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
+      user = FactoryGirl.create(:user)
       get :show, {:id => user.to_param}
       expect(assigns(:user)).to eq(user)
     end
@@ -48,14 +47,14 @@ RSpec.describe Admin::Api::V1::UsersController, :type => :controller do
       }
 
       it "updates the requested user" do
-        user = User.create! valid_attributes
+        user = FactoryGirl.create(:user)
         put :update, {:id => user.to_param, :user => new_attributes}
         user.reload
         expect(User.last.email).to eq(new_attributes[:email])
       end
 
       it "assigns the requested user as @user" do
-        user = User.create! valid_attributes
+        user = FactoryGirl.create(:user)
         put :update, {:id => user.to_param, :user => valid_attributes}
         expect(assigns(:user)).to eq(user)
       end
@@ -64,7 +63,7 @@ RSpec.describe Admin::Api::V1::UsersController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested user" do
-      user = User.create! valid_attributes
+      user = FactoryGirl.create(:user)
       expect {
         delete :destroy, {:id => user.to_param}
       }.to change(User, :count).by(-1)
