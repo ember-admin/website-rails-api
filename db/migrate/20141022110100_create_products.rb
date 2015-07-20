@@ -8,6 +8,5 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
-    Product.create_translation_table! title: :string
   end
 end
