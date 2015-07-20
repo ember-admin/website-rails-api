@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :user do
-    email "MyString"
-avatar "MyString"
+    email "some@some.com"
   end
-
 end
