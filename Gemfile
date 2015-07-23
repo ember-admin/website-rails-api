@@ -4,7 +4,6 @@ gem 'rails', '4.1.1'
 gem 'mysql2'
 gem 'active_model_serializers', '0.8.1'
 # broken 2.12.0 release
-gem 'puma', require: false
 gem 'unicorn'
 gem 'will_paginate'
 gem 'carrierwave'
@@ -12,20 +11,21 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'globalize', '~> 4.0.3'
 group :development, :test, :production do
-  gem 'pry-rails'
-  gem 'pry-doc'
-  gem 'quiet_assets'
   gem 'forgery'
-  gem 'byebug'
   gem 'faker'
 end
 
 group :development do
+  gem 'quiet_assets'
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'pry-doc'
   gem 'annotate'
   gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'rvm-capistrano'
   gem 'capistrano', '~> 3.1.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
@@ -50,5 +50,4 @@ group :test do
   gem 'growl', '~> 1.0.3'
   gem 'webmock'
 end
-gem 'rvm-capistrano'
 gem 'awesome_nested_set'
