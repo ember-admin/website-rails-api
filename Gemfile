@@ -15,8 +15,6 @@ group :development, :test, :production do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'quiet_assets'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'forgery'
   gem 'byebug'
   gem 'faker'
@@ -36,6 +34,8 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'childprocess', '0.3.6'
   gem 'spork', '1.0.0rc4'
   gem 'database_cleaner'
