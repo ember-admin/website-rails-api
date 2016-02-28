@@ -1,31 +1,31 @@
 development:
-  adapter: mysql2
+  adapter: postgresql 
   encoding: utf8
   database: ember_cli_admin_api_development
   pool: 5
   timeout: 5000
-  username: root
-  password:
+  host: 'localhost'
 
 test: &test
-  adapter: mysql2
+  adapter: postgresql 
   encoding: utf8
   database: ember_cli_admin_api_test
   pool: 5
   timeout: 5000
-  username: root
-  password:
+  host: 'localhost'
 
 production:
-  adapter: mysql2
+  adapter: postgresql 
   encoding: utf8
   database: ember_cli_admin_api
   pool: 5
   timeout: 5000
+  host: 'localhost'
 
 staging:
-  adapter: mysql2
+  adapter: postgresql 
   encoding: utf8
   database: ember_cli_admin_api_staging
   pool: 5
   timeout: 5000
+  host: 'localhost'
