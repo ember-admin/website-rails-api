@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '4.1.1'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 gem 'active_model_serializers', '0.8.1'
 # broken 2.12.0 release
 gem 'unicorn'
